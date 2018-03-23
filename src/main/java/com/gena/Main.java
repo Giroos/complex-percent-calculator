@@ -21,6 +21,10 @@ public class Main {
 
         System.out.println(v+v1+v2);
 
+        double v3 = calcWithRegularTax(10, 20, 100000, 8000);
+        double v4 = calcIRA(10, 20, 100000, 8000);
+        System.out.println(v3);
+        System.out.println(v4);
 
     }
 
@@ -40,5 +44,23 @@ public class Main {
         double amountForTax = initialSum - totalDeposit;
         double tax = amountForTax * 0.25;
         return initialSum - tax;
+    }
+
+    public static double calcWithRegularTax(int years, double percent, double initialSum, double monthlyDeposit){
+
+        double totalDeposit = initialSum;
+        System.out.println("-----------------------------------------------------");
+        for (int i = 1; i <= years; i++){
+            double yearlyDeposit = monthlyDeposit * 12;
+            //totalDeposit = totalDeposit + yearlyDeposit;
+
+            initialSum = initialSum + ((initialSum * (percent / 100)) * 0.75);
+            initialSum = initialSum + yearlyDeposit;
+
+            System.out.println("YEAR: " + i + " SUM: " + initialSum);
+
+        }
+
+        return initialSum;
     }
 }
